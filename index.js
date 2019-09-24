@@ -51,7 +51,7 @@ function countUpAndDown(n) {
 countUpAndDown(12);
 
 //example of O(n^2) because nested for loops square the O(n) of each for loop
-//exponential curve as n input grows time increases at rate of n squares example of a quadratic 
+//exponential curve as n input grows time increases at rate of n squares example of a quadratic
 function printAllPairs(n) {
   for (let i = 0; i < n; i++) {
     for (let j = 0; j < n; j++) {
@@ -60,3 +60,44 @@ function printAllPairs(n) {
   }
 }
 
+// O(n) -- linear increase as n increases
+function logAtLeast5(n) {
+  for (let i = 0; i <= Math.max(5, n); i++) {
+    console.log(i);
+  }
+}
+
+// O(1) as it grows it tops out at 5
+function logAtMost5(n) {
+  for (let i = 0; i <= Math.min(5, n); i++) {
+    console.log(i);
+  }
+}
+
+logAtLeast5(2);
+
+///SPACE COMPLEXITY EXAMPLES
+
+// O(1) space because only has 2 number assignments, doesnt matter how variables are being added to only that 
+//that we arent adding any new variables to the space
+function sum(arr) {
+  let total = 0;
+  for (let i = 0; i < arr.length; i++) {
+    total += arr[i];
+  }
+  return total;
+}
+
+const randomArray = [1, 2, 3, 4, 5];
+
+console.log('space complexity sum', sum(randomArray));
+
+//as input approaches infinity, array getting longer in direct proportion to the input array as seen
+//inside the for loop by pushing the arr integers into the new array which is n numbers
+function double(arr) {
+  let newArr = [];
+  for (let i = 0; i < arr.length; i++) {
+    newArr.push(2 * arr[i]);
+  }
+  return newArr;
+}
