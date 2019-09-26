@@ -140,7 +140,7 @@ function validAnagram(str1, str2) {
   return true;
 }
 
-validAnagram('margana', 'anagram');
+// validAnagram('margana', 'anagram');
 
 // ANOTHER SOLUTION
 
@@ -239,7 +239,7 @@ function countUniqueValues(arr) {
   return arr.indexOf(arr[first]);
 }
 
-countUniqueValues([1, 2, 3]);
+// countUniqueValues([1, 2, 3]);
 
 
 // SOLUTION THAT ACTUALLY WORKS
@@ -250,12 +250,10 @@ function countUniqueValuesNotMine(arr) {
   }
   let first = 0;
   for(let i = 1; i < arr.length; i++) {
-    console.log(first, i);
     if(arr[first] !== arr[i]) {
       first++;
       arr[first] = arr[i];
     } // i increments automatically in for loop so dont need if statement whether first and i are the same
-    console.log('first adn i')
     console.log(first, i); //shows first and i can point to the same index of the array before i iterates again
   }
   console.log('first', first + 1)
@@ -263,7 +261,7 @@ function countUniqueValuesNotMine(arr) {
 }
 
 const arr2 = [1, 2, 3, 4];
-countUniqueValuesNotMine(arr2);
+// countUniqueValuesNotMine(arr2);
 
 // SLIDING WINDOW PATTERN
 // this pattern involves creating a window which can either be an array or number from one position
@@ -313,7 +311,7 @@ countUniqueValuesNotMine(arr2);
     tempSum = maxSum;
     for(let i = num; i < arr.length; i++) {
       tempSum = tempSum - arr[i - num] + arr[i]; //sliding window part delete the first element and add the next element in array
-      maxSum = Match.max(maxSum, tempSum);
+      maxSum = Math.max(maxSum, tempSum);
     }
     return maxSum;
   }
@@ -366,6 +364,27 @@ countUniqueValuesNotMine(arr2);
 */
 
 
-let num1 = 12345566;
+// let num1 = 12345566;
 
-console.log(num1.toString().split(''))
+// console.log(num1.toString().split(''))
+
+function maxSubarraySum(arr, num) {
+  let maxSum = 0;
+  let tempSum = 0;
+  if (arr.length < num) return null;
+  for(let i = 0; i < num; i++) {
+    maxSum += arr[i];
+  }
+  tempSum = maxSum;
+  for(let i = num; i < arr.length; i++) {
+    console.log('i', i);
+    console.log('num', num);
+    console.log('arrietc', (tempSum - arr[i - num] + arr[i]));
+    tempSum = tempSum - arr[i - num] + arr[i]; //sliding window part delete the first element and add the next element in array
+    maxSum = Math.max(maxSum, tempSum);
+  }
+  return maxSum;
+}
+
+maxSubarraySum([1, 2, 4, 6, 7, 8, 2, 5, 9], 3);
+
